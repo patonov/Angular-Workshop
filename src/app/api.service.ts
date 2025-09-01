@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Post } from "./types/post";
 import { Theme } from "./types/theme";
-import { environment } from "./environments/environment";
+import { environment } from "../environments/environment";
 
 
 @Injectable({
@@ -12,9 +12,9 @@ export class ApiService{
     constructor(private http: HttpClient){}
     
     getPosts(limit?: number){
-        const { apiUrl } = environment;
+        //const { apiUrl } = environment;
         
-        let url = `${apiUrl}/posts`;
+        let url = `/api/posts`;
         if (limit){
             url += `?limit=${limit}`;
         }
@@ -23,7 +23,7 @@ export class ApiService{
     }
 
     getThemes(){
-        const { apiUrl } = environment;
-        return this.http.get<Theme[]>(`${apiUrl}/themes`);
+        //const { apiUrl } = environment;
+        return this.http.get<Theme[]>(`/api/themes`);
     }
 }
