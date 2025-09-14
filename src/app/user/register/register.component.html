@@ -29,8 +29,8 @@
                 <!-- telephone -->
                 <p class="field field-icon">
                     <label for="tel"><span><i class="fas fa-phone"></i></span></label>
-                    <select name="select-tel" id="select-tel" class="tel">
-                        <option value="00359">+359</option>
+                    <select aria-label="select-tel" name="select-tel" id="select-tel" class="tel">
+                        <option selected ="00359">+359</option>
                     </select>
                     <input type="text" name="tel" id="tel" placeholder="885 888 888">
                 </p>
@@ -58,7 +58,7 @@
 
                 <p class="text-center">
                     Have an account?
-                    <a href="#">Log In</a>
+                    <a routerLink="/login">Log In</a>
                 </p>
 
             </fieldset>
