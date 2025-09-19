@@ -13,7 +13,10 @@ export class AddThemeComponent {
 
   addTheme(event: Event, themeName: string, postText: string) {
     event.preventDefault();
-    this.apiService.createTheme(themeName, postText).subscribe(data => console.log(data));
+    
+    this.apiService.createTheme(themeName, postText).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }
