@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +13,13 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
     constructor(private userService: UserService, private router: Router){}
 
-    login(event: Event, emailValue: string, passwordValue: string){
-      event.preventDefault();
+    login(form: NgForm){
+      //event.preventDefault();
+      if(form.invalid){
+        console.error('Invalid login form!');
+        return;
+      }
+
       this.userService.login();
       this.router.navigate(['/home']);
     }
