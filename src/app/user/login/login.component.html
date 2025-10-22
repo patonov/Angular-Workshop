@@ -13,7 +13,9 @@
                         placeholder="john.doe@gmail.com"
                         ngModel
                         #inputEmail="ngModel"
-                        required />
+                        required 
+                        [appEmail]="domains"
+                        />
                 </p>
                 <p class="error">
                     Email is required!
