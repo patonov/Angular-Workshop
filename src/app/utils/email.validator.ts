@@ -6,10 +6,10 @@ export function emailValidator(domains: string[]): ValidatorFn {
     const regEx = new RegExp(`[A-Za-z0-9]+@gmail\.(${domainStr})`);
 
     return (control) => {
-        const isValid = control.value === '' || regEx.test(control.value);
+        const isInvalid = control.value === '' || regEx.test(control.value);
 
-        console.log(isValid);
+        //console.log(isInvalid);
         
-        return null;
+        return isInvalid ? null : {emailValidator: true};
     }; 
 }
