@@ -39,16 +39,28 @@
                             name="password" 
                             id="password" 
                             placeholder="******"
-                            #inputPassword>
+                            ngModel
+                            #inputPassword="ngModel"
+                            minlength="5"
+                            required>
                 </p>
-                <!-- <p class="error">
-                    Password is required!
-                </p>
-                <p class="error">
-                    Password must be at least 4 characters!
-                </p> -->
-
-                <button>Login</button>
+                
+                @if(inputPassword?.touched){
+                    <div>
+                        @if (inputPassword?.errors?.['required']) {
+                            <p class="error"> 
+                                Password is required!
+                            </p>
+                        }
+                        @if (inputPassword?.errors?.['minlength']) {
+                            <p class="error"> 
+                                Password must be at least 4 characters!
+                            </p>
+                        }
+                    </div>
+                }
+                                
+                <button [disabled]="form.invalid">Login</button>
 
                 <p class="text-center">
                     Have an account?
