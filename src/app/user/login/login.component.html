@@ -35,7 +35,12 @@
 
                 <p class="field field-icon">
                     <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                    <input type="password" 
+                    <input 
+                    [class]="(
+                        (inputPassword?.touched && inputPassword?.errors?.['required']) ||
+                        (inputPassword?.touched && inputPassword?.errors?.['minlength']))
+                        ? 'input-error': '' "
+                            type="password" 
                             name="password" 
                             id="password" 
                             placeholder="******"
