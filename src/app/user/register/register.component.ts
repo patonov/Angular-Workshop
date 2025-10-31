@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -11,8 +11,18 @@ import { RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
     form = new FormGroup({
-      username: new FormControl(''),
-      email: new FormControl(''),
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
       tel: new FormControl(''),
+      password: new FormControl('', [Validators.required]),
+      rePassword: new FormControl('', [Validators.required]),
     });
+
+    register() {
+      console.log(this.form.invalid);
+      if(this.form.invalid){
+        return;
+      }
+      console.log(this.form.value);
+    }
 }

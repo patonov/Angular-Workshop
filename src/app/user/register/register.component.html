@@ -1,6 +1,6 @@
 <!-- homepage -->
     <div class="container">
-        <form class="register" action="" method="post">
+        <form class="register" [formGroup]="form" (ngSubmit)="register()">
 
             <fieldset>
                 <h2>Registration Form</h2>
@@ -8,7 +8,12 @@
                 <!-- username -->
                 <p class="field field-icon">
                     <label for="username"><span><i class="fas fa-user"></i></span></label>
-                    <input class="input-error" type="text" name="username" id="username" placeholder="Johny">
+                    <input class="input-error" 
+                    type="text" 
+                    name="username" 
+                    id="username" 
+                    placeholder="Johny"
+                    formControlName="username">
                 </p>
                 <p class="error">
                     Username is required!
@@ -54,7 +59,7 @@
                 </p>
                 <!-- <p class="error">Repeat Password does not match password!</p> -->
 
-                <button disabled>Create Account</button>
+                <button [disabled]="form.invalid">Create Account</button>
 
                 <p class="text-center">
                     Have an account?
