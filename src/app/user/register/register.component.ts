@@ -11,7 +11,10 @@ import { RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
     form = new FormGroup({
-      username: new FormControl('', [Validators.required]),
+      username: new FormControl('', [
+        Validators.required, 
+        Validators.minLength(5)
+      ]),
       email: new FormControl('', [Validators.required]),
       tel: new FormControl(''),
       password: new FormControl('', [Validators.required]),

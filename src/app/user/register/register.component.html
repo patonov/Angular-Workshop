@@ -16,9 +16,21 @@
                     formControlName="username"
                     />
                 </p>
-                <p class="error">
-                    Username is required!
-                </p>
+                
+                @if(form.get('username')?.touched){
+                    <div>
+                        @if (form.get('username')?.errors?.['required']) {
+                            <p class="error"> 
+                                Username is required!
+                            </p>
+                        }
+                        @if (form.get('username')?.errors?.['minlength']) {
+                            <p class="error"> 
+                                Username must be at least 5 characters!
+                            </p>
+                        }
+                    </div>
+                }
 
                 <!-- email -->
                 <p class="field field-icon">
@@ -82,7 +94,7 @@
                 <!-- <p class="error">Repeat Password does not match password!</p> -->
 
                 <button [disabled]="form.invalid"
-                [style]="{ backgroundColor: form.invalid ? 'grey' : 'initial' }"
+                [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }"
                 >Create Account</button>
 
                 <p class="text-center">
