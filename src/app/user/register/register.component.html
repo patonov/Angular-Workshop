@@ -8,7 +8,11 @@
                 <!-- username -->
                 <p class="field field-icon">
                     <label for="username"><span><i class="fas fa-user"></i></span></label>
-                    <input class="input-error" 
+                    <input 
+                    [class]="(form.get('username')?.touched && 
+                        form.get('username')?.errors?.['required']) ||
+                        (form.get('username')?.touched && 
+                        form.get('username')?.errors?.['minlength']) ? 'input-error': ''" 
                     type="text" 
                     name="username" 
                     id="username" 
