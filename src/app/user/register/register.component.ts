@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { emailValidator } from '../../utils/email.validator';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent {
         Validators.required, 
         Validators.minLength(5)
       ]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, emailValidator(['bg', 'com'])]),
       tel: new FormControl(''),
       password: new FormControl('', [Validators.required]),
       rePassword: new FormControl('', [Validators.required]),

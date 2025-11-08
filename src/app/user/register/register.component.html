@@ -7,7 +7,9 @@
 
                 <!-- username -->
                 <p class="field field-icon">
-                    <label for="username"><span><i class="fas fa-user"></i></span></label>
+                    <label for="username">
+                        <span><i class="fas fa-user"></i></span>
+                    </label>
                     <input 
                     [class]="(form.get('username')?.touched && 
                         form.get('username')?.errors?.['required']) ||
@@ -46,12 +48,21 @@
                     formControlName="email"
                     />
                 </p>
-                <!-- <p class="error">
-                    Email is required!
-                </p>
-                <p class="error">
-                    Email is not valid!
-                </p> -->
+                
+                @if(form.get('email')?.touched){
+                    <div>
+                        @if (form.get('email')?.errors?.['required']) {
+                            <p class="error"> 
+                                Email is required!
+                            </p>
+                        }
+                        @if (form.get('email')?.errors?.['emailValidator']) {
+                            <p class="error"> 
+                                Email is not valid!
+                            </p>
+                        }
+                    </div>
+                }
 
                 <!-- telephone -->
                 <p class="field field-icon">
