@@ -22,6 +22,20 @@ export class RegisterComponent {
       rePassword: new FormControl('', [Validators.required]),
     });
 
+    isFieldTextMissing(controlName: string) {
+      return (
+        this.form.get(controlName)?.touched
+        && this.form.get(controlName)?.errors?.['required']
+      );
+    };
+
+    get isEmailValid() {
+      return (
+        this.form.get('email')?.touched
+        && this.form.get('email')?.errors?.['emailValidator']
+      );
+    }
+
     register() {
       console.log(this.form.invalid);
       if(this.form.invalid){

@@ -41,7 +41,9 @@
                 <!-- email -->
                 <p class="field field-icon">
                     <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                    <input type="email" 
+                    <input 
+                    [class]="isFieldTextMissing('email') || isEmailValid ? 'input-error' : ''"
+                    type="email" 
                     name="email" 
                     id="email" 
                     placeholder="john.doe@gmail.com"
