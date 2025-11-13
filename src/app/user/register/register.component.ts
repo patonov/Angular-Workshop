@@ -18,8 +18,10 @@ export class RegisterComponent {
       ]),
       email: new FormControl('', [Validators.required, emailValidator(['bg', 'com'])]),
       tel: new FormControl(''),
-      password: new FormControl('', [Validators.required]),
-      rePassword: new FormControl('', [Validators.required]),
+      passGroup: new FormGroup({
+        password: new FormControl('', [Validators.required]),
+        rePassword: new FormControl('', [Validators.required]),
+      })
     });
 
     isFieldTextMissing(controlName: string) {
@@ -34,6 +36,10 @@ export class RegisterComponent {
         this.form.get('email')?.touched
         && this.form.get('email')?.errors?.['emailValidator']
       );
+    }
+
+    get passGroup(){
+      return this.form.get('passGroup');
     }
 
     register() {
