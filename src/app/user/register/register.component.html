@@ -104,7 +104,6 @@
                     }
 
 
-
                     <!-- rePassword -->
                     <p class="field field-icon">
                         <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
@@ -115,7 +114,13 @@
                         formControlName="rePassword" 
                         />
                     </p>
-                    <!-- <p class="error">Repeat Password does not match password!</p> -->
+
+                    <div>
+                        @if (passGroup?.errors?.['matchPasswordValidator'] ||
+                        passGroup?.get('rePassword')?.errors?.['required']) {
+                            <p class="error">Repeat Password does not match password!</p> 
+                        }
+                    </div>
                 </div>
                 <button [disabled]="form.invalid"
                 [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }"

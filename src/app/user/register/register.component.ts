@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { emailValidator } from '../../utils/email.validator';
+import { matchPasswordValidator } from '../../utils/match-password.validator';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,9 @@ export class RegisterComponent {
       passGroup: new FormGroup({
         password: new FormControl('', [Validators.required]),
         rePassword: new FormControl('', [Validators.required]),
+      },
+      {
+        validators: [matchPasswordValidator('password', 'rePassword')],
       })
     });
 
