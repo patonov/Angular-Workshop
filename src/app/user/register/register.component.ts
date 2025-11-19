@@ -20,7 +20,7 @@ export class RegisterComponent {
       email: new FormControl('', [Validators.required, emailValidator(['bg', 'com'])]),
       tel: new FormControl(''),
       passGroup: new FormGroup({
-        password: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required, Validators.minLength(5)]),
         rePassword: new FormControl('', [Validators.required]),
       },
       {

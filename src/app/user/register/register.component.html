@@ -85,7 +85,14 @@
                     <!-- password -->
                     <p class="field field-icon">
                         <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                        <input type="password" 
+                        <input 
+                        [class]="(
+                            (passGroup?.get('password')?.touched && 
+                            passGroup?.get('password')?.errors?.['required']) ||
+                            (passGroup?.get('password')?.touched && 
+                            passGroup?.get('password')?.errors?.['minlength'])
+                        ) ? 'input-error' : ''"
+                        type="password" 
                         name="password" 
                         id="password" 
                         placeholder="******"
@@ -100,14 +107,24 @@
                                 Password is required!
                             </p>
                         }
+                        @if (passGroup?.get('password')?.errors?.['minlength']) {
+                            <p class="error"> 
+                                Password must be at leat 5 characters!
+                            </p>
+                        }
                     </div>
                     }
-
 
                     <!-- rePassword -->
                     <p class="field field-icon">
                         <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-                        <input type="password" 
+                        <input 
+                        [class]="(
+                            (passGroup?.get('rePassword')?.touched && 
+                            (passGroup?.get('rePassword')?.errors?.['required'] ||
+                            passGroup?.errors?.['matchPasswordValidator'] ))
+                        ) ? 'input-error' : ''"
+                        type="password" 
                         name="rePassword" 
                         id="rePassword" 
                         placeholder="******"
@@ -115,12 +132,14 @@
                         />
                     </p>
 
+                    @if (passGroup?.get('rePassword')?.touched) {
                     <div>
                         @if (passGroup?.errors?.['matchPasswordValidator'] ||
                         passGroup?.get('rePassword')?.errors?.['required']) {
                             <p class="error">Repeat Password does not match password!</p> 
                         }
                     </div>
+                    }
                 </div>
                 <button [disabled]="form.invalid"
                 [style]="{ backgroundColor: form.invalid ? 'grey' : '#234465' }"
