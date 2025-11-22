@@ -14,12 +14,23 @@
                         #inputThemeName="ngModel"
                         required
                         minlength="5"/>
-                    <p class="error">
-                        Theme name is required.
-                    </p>
-                    <p class="error">
-                        Theme name must be at least 5 characters long.
-                    </p>
+                    
+                    @if (inputThemeName?.touched) {
+                    <div>
+                        @if (inputThemeName?.errors?.['required']) {
+                        <p class="error">
+                            Theme name is required.
+                        </p>
+                        }
+                        @if (inputThemeName?.errors?.['minlength']) {
+                        <p class="error">
+                            Theme name must be at least 5 characters long.
+                        </p>
+                        }
+                    </div>
+                    }
+
+
                 </div>
                 <div class="new-theme-content">
                     <label for="postText">Post <span class="red">*</span></label>
@@ -34,12 +45,22 @@
                         required
                         minlength="10"
                         ></textarea>
-                    <p class="error">
-                        The field with your post is required.
-                    </p>
-                    <p class="error">
-                        Post must be at least 10 characters long.
-                    </p>
+
+                    @if (inputPostText?.touched) {
+                    <div>
+                        @if (inputPostText?.errors?.['required']) {
+                        <p class="error">
+                            The field with your post is required.
+                        </p>
+                        }
+                        @if (inputPostText?.errors?.['minlength']) {
+                        <p class="error">
+                             Post must be at least 10 characters long.
+                        </p>
+                        }
+                    </div>
+                    }
+
                 </div>
                 <div class="new-theme-buttons">
                     <button class="cancel">Cancel</button>
