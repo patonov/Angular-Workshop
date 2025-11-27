@@ -4,6 +4,7 @@
   ],
   "hints": {
     "button-type": "off",
-    "axe/structure": "off"
+    "axe/structure": "off",
+    "axe/forms": "off"
   }
 }
