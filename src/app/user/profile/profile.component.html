@@ -54,8 +54,14 @@
                                 formControlName="tel">
                         </div>
                     </div>
-                    <button class="red-button" (click)="toggleEditMode()">Cancel</button>
-                    <button class="green-button">Save</button>
+                    <div class="btn-wrapper">
+                        <button class="red-button" (click)="toggleEditMode()">Cancel</button>
+                        <button 
+                            class="green-button"
+                            [disabled]="form.invalid"
+                            [style]="{ backgroundColor: form.invalid ? 'grey' : 'initial' }"
+                        >Save</button>
+                    </div>
                 </form>
                 </ng-container>
             }

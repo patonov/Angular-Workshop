@@ -104,3 +104,10 @@
     border-radius: 0.5em;
     padding: 0.5em 1.5em;
 }
+
+.btn-wrapper {
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
