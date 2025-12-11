@@ -13,6 +13,12 @@ import { DOMAINS } from '../../constants';
 export class ProfileComponent {
     isEditMode: boolean = false;
 
+    profileDetails = {
+      username: 'John',
+      email: 'john1234@gmail.com',
+      tel: '123-123-123'
+    };
+
     form = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.minLength(5)]), 
       email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]), 
@@ -24,6 +30,7 @@ export class ProfileComponent {
     }
 
     handleSaveProfile(){
-      
+      console.log(this.form.invalid);
+      console.log(this.form.value);
     }
 }
