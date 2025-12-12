@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { emailValidator } from '../../utils/email.validator';
 import { DOMAINS } from '../../constants';
+import { ProfileDetails } from '../../types/user';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ import { DOMAINS } from '../../constants';
 export class ProfileComponent {
     isEditMode: boolean = false;
 
-    profileDetails = {
+    profileDetails: ProfileDetails = {
       username: 'John',
       email: 'john1234@gmail.com',
       tel: '123-123-123'
@@ -30,7 +31,11 @@ export class ProfileComponent {
     }
 
     handleSaveProfile(){
-      console.log(this.form.invalid);
-      console.log(this.form.value);
+      if(this.form.invalid){
+        return;
+      }     
+
+      this.profileDetails = this.form.value as ProfileDetails;
+      this.toggleEditMode();
     }
 }

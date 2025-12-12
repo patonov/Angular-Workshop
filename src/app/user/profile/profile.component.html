@@ -7,15 +7,15 @@
             <ng-container>
                 <div class="flex">
                     <p>Username: </p>
-                    <p>Johny</p>
+                    <p>{{ profileDetails.username }}</p>
                 </div>
                 <div class="flex">
                     <p>Email: </p>
-                    <p>{{ 'john.doe@gmail.com' }}</p>
+                    <p>{{ profileDetails.email }}</p>
                 </div>
                 <div class="flex">
                     <p>Phone: </p>
-                    <p>+359 885 888 888</p>
+                    <p>{{ profileDetails.tel }}</p>
                 </div>
                 <button class="edit-button" (click)="toggleEditMode()">Edit</button>
             </ng-container>
