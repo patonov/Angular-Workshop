@@ -21,9 +21,9 @@ export class ProfileComponent {
     };
 
     form = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.minLength(5)]), 
-      email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]), 
-      tel: new FormControl(''), 
+      username: new FormControl(this.profileDetails.username, [Validators.required, Validators.minLength(5)]), 
+      email: new FormControl(this.profileDetails.email, [Validators.required, emailValidator(DOMAINS)]), 
+      tel: new FormControl(this.profileDetails.tel), 
     });
 
     toggleEditMode(){
@@ -36,6 +36,12 @@ export class ProfileComponent {
       }     
 
       this.profileDetails = this.form.value as ProfileDetails;
+      this.toggleEditMode();
+    }
+
+    onCancel(event: Event){
+      event.preventDefault();
+      console.log('On cancel invoked');
       this.toggleEditMode();
     }
 }

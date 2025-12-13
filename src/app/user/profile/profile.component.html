@@ -29,7 +29,8 @@
                             name="username" 
                             id="username" 
                             value="Johny" 
-                            formControlName="username">
+                            formControlName="username"
+                            />
                     </div>
                     <div class="flex">
                         <p>Email: </p>
@@ -38,7 +39,8 @@
                             name="email" 
                             id="email" 
                             value="john.doe@gmail.com"
-                            formControlName="email">
+                            formControlName="email"
+                            />
                     </div>
                     <div class="flex">
                         <p>Phone: </p>
@@ -51,11 +53,12 @@
                                 name="tel" 
                                 id="tel" 
                                 value="885 888 888"
-                                formControlName="tel">
+                                formControlName="tel"
+                                />
                         </div>
                     </div>
                     <div class="btn-wrapper">
-                        <button class="red-button" (click)="toggleEditMode()">Cancel</button>
+                        <button class="red-button" (click)="onCancel($event)">Cancel</button>
                         <button 
                             class="green-button"
                             [disabled]="form.invalid"
