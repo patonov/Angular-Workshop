@@ -24,17 +24,17 @@ export class ApiService{
 
     getThemes(){
         const { apiUrl } = environment;
-        return this.http.get<Theme[]>(`${apiUrl}/themes`);
+        return this.http.get<Theme[]>(`api/themes`);
     }
 
     getSingleTheme(id: string){
         const { apiUrl } = environment;
-        return this.http.get<Theme>(`${apiUrl}/themes/${id}`);
+        return this.http.get<Theme>(`api/themes/${id}`);
     }
 
     createTheme(themeName: string, postText: string){
-        const { apiUrl } = environment;
+       // const { apiUrl } = environment;
         const payLoad = { themeName, postText };
-        return this.http.post<Theme>(`${apiUrl}/themes`, payLoad);
+        return this.http.post<Theme>(`api/themes`, payLoad);
     }
 }
